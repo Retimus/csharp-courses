@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 namespace Lesson._1 {
     class Program {
         static void Main(string[] args) {
-            printMainMenu();
+            PrintMainMenu();
         }
 
-        static public void printMainMenu() {
+        static public void PrintMainMenu() {
             Console.Clear();
 
             Console.WriteLine("Choose your oprion and press [Enter]:");
@@ -18,6 +18,9 @@ namespace Lesson._1 {
             Console.WriteLine("2. Exersise #2");
             Console.WriteLine("3. Exersise #3");
             Console.WriteLine("4. Exersise #4");
+            Console.WriteLine("5. Exersise #5 (Conditional statements)");
+            Console.WriteLine("6. Exersise #6 (Loops)");
+            Console.WriteLine("7. Exersise #7 (Arrays)");
             Console.WriteLine("0. Exit");
             Console.Write("\nEnter number: ");
             string s = Console.ReadLine();
@@ -30,21 +33,30 @@ namespace Lesson._1 {
                 Console.WriteLine("\nPlease enter digits only");
                 Console.WriteLine("\nPress any key to continue...");
                 Console.ReadKey();
-                printMainMenu();
+                PrintMainMenu();
             }   
 
             switch (option) {
                 case 1:
-                    exerciseOne();
+                    ExerciseOne();
                     break;
                 case 2:
-                    exerciseTwo();
+                    ExerciseTwo();
                     break;
                 case 3:
-                    exerciseThree();
+                    ExerciseThree();
                     break;
                 case 4:
-                    exerciseFour();
+                    ExerciseFour();
+                    break;
+                case 5:
+                    ExerciseFive();
+                    break;
+                case 6:
+                    ExerciseSix();
+                    break;
+                case 7:
+                    ExerciseSeven();
                     break;
                 case 0:
                     Console.WriteLine("Exit");
@@ -54,12 +66,12 @@ namespace Lesson._1 {
                     Console.WriteLine("Please choose appropriate number");
                     Console.WriteLine("\nPress any key to continue...");
                     Console.ReadKey();
-                    printMainMenu();
+                    PrintMainMenu();
                     break;
             }
         }
 
-        public static void exerciseOne() {
+        public static void ExerciseOne() {
             Console.Clear();
 
             Console.Write("Enter your name: ");
@@ -72,10 +84,10 @@ namespace Lesson._1 {
             Console.WriteLine("\nHello, " + name + " " + surname + ". You have entered number " + number + ".");
             Console.WriteLine("\nPress any key to continue...");
             Console.ReadKey();
-            printMainMenu();
+            PrintMainMenu();
         }
 
-        public static void exerciseTwo() {
+        public static void ExerciseTwo() {
             Console.Clear();
 
             Console.Write("Enter first variable: ");
@@ -97,10 +109,10 @@ namespace Lesson._1 {
             Console.WriteLine("Variable2 = " + var2);
             Console.WriteLine("\nPress any key to continue...");
             Console.ReadKey();
-            printMainMenu();
+            PrintMainMenu();
         }
 
-        public static void exerciseThree() {
+        public static void ExerciseThree() {
             Console.Clear();
 
             Console.Write("Enter number to multiply: ");
@@ -113,7 +125,7 @@ namespace Lesson._1 {
                 Console.WriteLine("\nPlease enter digits only");
                 Console.WriteLine("\nPress any key to continue...");
                 Console.ReadKey();
-                exerciseThree();
+                ExerciseThree();
             }
 
             Console.WriteLine();
@@ -123,10 +135,10 @@ namespace Lesson._1 {
 
             Console.WriteLine("\nPress any key to continue...");
             Console.ReadKey();
-            printMainMenu();
+            PrintMainMenu();
         }
 
-        public static void exerciseFour() {
+        public static void ExerciseFour() {
             Console.Clear();
 
             Console.Write("Enter four digits (comma separated): ");
@@ -140,10 +152,134 @@ namespace Lesson._1 {
 
             Console.WriteLine("\nPress any key to continue...");
             Console.ReadKey();
-            printMainMenu();
+            PrintMainMenu();
         }
 
-        public static int Sum(params int[] items) {
+        public static void ExerciseFive() {
+            Console.Clear();
+
+            Console.Write("Enter year value (in four digits format): ");
+            string year = Console.ReadLine();
+
+            int intYear = 0;
+            try {
+                intYear = Convert.ToInt32(year);
+            } catch (FormatException fe) {
+                Console.WriteLine("\nPlease enter digits only");
+                Console.WriteLine("\nPress any key to continue...");
+                Console.ReadKey();
+                ExerciseFive();
+            }
+
+            if (year.Length != 4) {
+                Console.WriteLine("\nYou should enter 4 digits");
+                Console.WriteLine("\nPress any key to continue...");
+                Console.ReadKey();
+                ExerciseFive();
+            }
+
+            if (DateTime.IsLeapYear(intYear)) {
+                Console.WriteLine("{0} is a leap year.", year);
+            } else {
+                Console.WriteLine("{0} is not a leap year.", year);
+            }
+
+            Console.WriteLine("\nPress any key to continue...");
+            Console.ReadKey();
+            PrintMainMenu();
+        }
+
+        public static void ExerciseSix() {
+            Console.Clear();
+
+            Console.Write("Enter any number: ");
+            string number = Console.ReadLine();
+
+            int intNumber = 0;
+            try {
+                intNumber = Convert.ToInt32(number);
+            } catch (FormatException fe) {
+                Console.WriteLine("\nPlease enter digits only");
+                Console.WriteLine("\nPress any key to continue...");
+                Console.ReadKey();
+                ExerciseSix();
+            }
+
+            string lineOfOnes = "1";
+            int result = 0;
+            for (int i = 0; i < intNumber; i++) {
+                result += Convert.ToInt32(lineOfOnes);
+                lineOfOnes += "1";
+            }
+
+            Console.WriteLine("\nSeries sum = " + result);
+
+            Console.WriteLine("\nPress any key to continue...");
+            Console.ReadKey();
+            PrintMainMenu();
+        }
+
+        public static void ExerciseSeven() {
+            Console.Clear();
+
+            Console.Write("Enter an array length: ");
+            string length = Console.ReadLine();
+
+            int intLength = 0;
+            try {
+                intLength = Convert.ToInt32(length);
+            } catch (FormatException fe) {
+                Console.WriteLine("\nPlease enter digits only");
+                Console.WriteLine("\nPress any key to continue...");
+                Console.ReadKey();
+                ExerciseSeven();
+            }
+
+            Console.Write("Enter an array elements (comma separated): ");
+            string lineElements = Console.ReadLine();
+
+            string[] lineItems = lineElements.Split(',');
+            if (lineItems.Length != intLength) {
+                Console.WriteLine("\nEntered elements doesn't fit entered array length");
+                Console.WriteLine("\nPress any key to continue...");
+                Console.ReadKey();
+                ExerciseSeven();
+            }
+
+            int[] intItems = new int[intLength];
+
+            try {
+                intItems = Array.ConvertAll(lineItems, s => int.Parse(s));
+            } catch (FormatException fe) {
+                Console.WriteLine("\nPlease enter digits only for array elements");
+                Console.WriteLine("\nPress any key to continue...");
+                Console.ReadKey();
+                ExerciseSeven();
+            }
+
+            Console.WriteLine();
+            bool didSwap;
+            do {
+                didSwap = false;
+                for (int i = 0; i < intItems.Length - 1; i++) {
+                    if (intItems[i] > intItems[i + 1]) {
+                        int temp = intItems[i + 1];
+                        intItems[i + 1] = intItems[i];
+                        intItems[i] = temp;
+                        didSwap = true;
+                    }
+                }
+            } while (didSwap);
+            for (int i = 0; i != intItems.Length; i++) {
+                Console.WriteLine(intItems[i]);
+            }
+
+            Console.WriteLine("\nPress any key to continue...");
+            Console.ReadKey();
+            PrintMainMenu();
+        }
+
+        private static int Sum(params int[] items) {
             int result = 0;
 
             for (int i = 0; i < items.Length; i++) {
