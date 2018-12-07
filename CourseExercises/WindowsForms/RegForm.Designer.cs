@@ -23,6 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
             this.lblName = new System.Windows.Forms.Label();
             this.lblSurname = new System.Windows.Forms.Label();
             this.lblFullName = new System.Windows.Forms.Label();
@@ -42,6 +43,22 @@
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtCode = new System.Windows.Forms.TextBox();
             this.mskdTxtSsn = new System.Windows.Forms.MaskedTextBox();
+            this.errorProviderEmail = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderName = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderSurname = new System.Windows.Forms.ErrorProvider(this.components);
+            this.lblFullNameValue = new System.Windows.Forms.Label();
+            this.errorProviderPassword = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderRepPassword = new System.Windows.Forms.ErrorProvider(this.components);
+            this.lblCodeGen = new System.Windows.Forms.Label();
+            this.errorProviderCode = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderSsn = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderEmail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderSurname)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderPassword)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderRepPassword)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderCode)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderSsn)).BeginInit();
             this.SuspendLayout();
             // 
             // lblName
@@ -53,7 +70,6 @@
             this.lblName.Size = new System.Drawing.Size(66, 24);
             this.lblName.TabIndex = 0;
             this.lblName.Text = "Name:";
-            this.lblName.Click += new System.EventHandler(this.lblName_Click);
             // 
             // lblSurname
             // 
@@ -63,7 +79,6 @@
             this.lblSurname.Size = new System.Drawing.Size(92, 24);
             this.lblSurname.TabIndex = 1;
             this.lblSurname.Text = "Surname:";
-            this.lblSurname.Click += new System.EventHandler(this.lblSurname_Click);
             // 
             // lblFullName
             // 
@@ -73,7 +88,6 @@
             this.lblFullName.Size = new System.Drawing.Size(102, 24);
             this.lblFullName.TabIndex = 2;
             this.lblFullName.Text = "Full Name:";
-            this.lblFullName.Click += new System.EventHandler(this.lblFullName_Click);
             // 
             // lblPassword
             // 
@@ -83,7 +97,6 @@
             this.lblPassword.Size = new System.Drawing.Size(97, 24);
             this.lblPassword.TabIndex = 3;
             this.lblPassword.Text = "Password:";
-            this.lblPassword.Click += new System.EventHandler(this.lblPassword_Click);
             // 
             // lblRepPassword
             // 
@@ -138,6 +151,7 @@
             this.btnSave.TabIndex = 9;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCancel
             // 
@@ -147,6 +161,7 @@
             this.btnCancel.TabIndex = 10;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // txtName
             // 
@@ -154,6 +169,8 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(280, 29);
             this.txtName.TabIndex = 11;
+            this.txtName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
+            this.txtName.LostFocus += new System.EventHandler(this.txtName_LostFocus);
             // 
             // txtSurname
             // 
@@ -161,21 +178,26 @@
             this.txtSurname.Name = "txtSurname";
             this.txtSurname.Size = new System.Drawing.Size(280, 29);
             this.txtSurname.TabIndex = 12;
-            this.txtSurname.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.txtSurname.TextChanged += new System.EventHandler(this.txtSurname_TextChanged);
+            this.txtSurname.LostFocus += new System.EventHandler(this.txtSurname_LostFocus);
             // 
             // txtPassword
             // 
             this.txtPassword.Location = new System.Drawing.Point(184, 160);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(280, 29);
             this.txtPassword.TabIndex = 13;
+            this.txtPassword.LostFocus += new System.EventHandler(this.txtPassword_LostFocus);
             // 
             // txtRepPassword
             // 
             this.txtRepPassword.Location = new System.Drawing.Point(184, 200);
             this.txtRepPassword.Name = "txtRepPassword";
+            this.txtRepPassword.PasswordChar = '*';
             this.txtRepPassword.Size = new System.Drawing.Size(280, 29);
             this.txtRepPassword.TabIndex = 14;
+            this.txtRepPassword.LostFocus += new System.EventHandler(this.txtRepPassword_LostFocus);
             // 
             // datePicker
             // 
@@ -185,7 +207,7 @@
             this.datePicker.Name = "datePicker";
             this.datePicker.Size = new System.Drawing.Size(114, 29);
             this.datePicker.TabIndex = 16;
-            this.datePicker.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            this.datePicker.ValueChanged += new System.EventHandler(this.datePicker_ValueChanged);
             // 
             // txtEmail
             // 
@@ -193,6 +215,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(280, 29);
             this.txtEmail.TabIndex = 18;
+            this.txtEmail.LostFocus += new System.EventHandler(this.txtEmail_LostFocus);
             // 
             // txtCode
             // 
@@ -208,12 +231,59 @@
             this.mskdTxtSsn.Name = "mskdTxtSsn";
             this.mskdTxtSsn.Size = new System.Drawing.Size(130, 29);
             this.mskdTxtSsn.TabIndex = 20;
+            this.mskdTxtSsn.LostFocus += new System.EventHandler(this.mskdTxtSsn_LostFocus);
+            // 
+            // errorProviderEmail
+            // 
+            this.errorProviderEmail.ContainerControl = this;
+            // 
+            // errorProviderName
+            // 
+            this.errorProviderName.ContainerControl = this;
+            // 
+            // errorProviderSurname
+            // 
+            this.errorProviderSurname.ContainerControl = this;
+            // 
+            // lblFullNameValue
+            // 
+            this.lblFullNameValue.AutoSize = true;
+            this.lblFullNameValue.Location = new System.Drawing.Point(184, 120);
+            this.lblFullNameValue.Name = "lblFullNameValue";
+            this.lblFullNameValue.Size = new System.Drawing.Size(0, 24);
+            this.lblFullNameValue.TabIndex = 21;
+            // 
+            // errorProviderPassword
+            // 
+            this.errorProviderPassword.ContainerControl = this;
+            // 
+            // errorProviderRepPassword
+            // 
+            this.errorProviderRepPassword.ContainerControl = this;
+            // 
+            // lblCodeGen
+            // 
+            this.lblCodeGen.AutoSize = true;
+            this.lblCodeGen.Location = new System.Drawing.Point(270, 360);
+            this.lblCodeGen.Name = "lblCodeGen";
+            this.lblCodeGen.Size = new System.Drawing.Size(0, 24);
+            this.lblCodeGen.TabIndex = 22;
+            // 
+            // errorProviderCode
+            // 
+            this.errorProviderCode.ContainerControl = this;
+            // 
+            // errorProviderSsn
+            // 
+            this.errorProviderSsn.ContainerControl = this;
             // 
             // RegForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(563, 498);
+            this.Controls.Add(this.lblCodeGen);
+            this.Controls.Add(this.lblFullNameValue);
             this.Controls.Add(this.mskdTxtSsn);
             this.Controls.Add(this.txtCode);
             this.Controls.Add(this.txtEmail);
@@ -238,6 +308,13 @@
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "RegForm";
             this.Text = "Registration Form";
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderEmail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderSurname)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderPassword)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderRepPassword)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderCode)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderSsn)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -264,6 +341,15 @@
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtCode;
         private System.Windows.Forms.MaskedTextBox mskdTxtSsn;
+        private System.Windows.Forms.ErrorProvider errorProviderEmail;
+        private System.Windows.Forms.ErrorProvider errorProviderName;
+        private System.Windows.Forms.ErrorProvider errorProviderSurname;
+        private System.Windows.Forms.Label lblFullNameValue;
+        private System.Windows.Forms.ErrorProvider errorProviderPassword;
+        private System.Windows.Forms.ErrorProvider errorProviderRepPassword;
+        private System.Windows.Forms.Label lblCodeGen;
+        private System.Windows.Forms.ErrorProvider errorProviderCode;
+        private System.Windows.Forms.ErrorProvider errorProviderSsn;
     }
 }
 
