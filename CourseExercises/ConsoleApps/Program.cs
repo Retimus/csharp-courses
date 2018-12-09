@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lesson._1 {
+namespace CourseApps {
     class Program {
         static void Main(string[] args) {
             PrintMainMenu();
@@ -206,9 +206,9 @@ namespace Lesson._1 {
             }
 
             string lineOfOnes = "1";
-            int result = 0;
+            long result = 0;
             for (int i = 0; i < intNumber; i++) {
-                result += Convert.ToInt32(lineOfOnes);
+                result += Convert.ToInt64(lineOfOnes);
                 lineOfOnes += "1";
             }
 
