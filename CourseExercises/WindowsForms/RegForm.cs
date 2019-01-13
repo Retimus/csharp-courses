@@ -95,8 +95,7 @@ namespace WindowsForms {
 
             if (onSave && txtName.Text.Length == 0) {
                 errorProviderName.SetError(txtName, "Name is mandatory");
-            }
-            if (txtName.Text.Length > 0 && !Regex.IsMatch(txtName.Text, "^[a-zA-Z-]+$")) {
+            } else if (txtName.Text.Length > 0 && !Regex.IsMatch(txtName.Text, "^[a-zA-Z-]+$")) {
                 errorProviderName.SetError(txtName, "Name can consist of alphabetical characters and dash");
             }
         }
@@ -106,8 +105,7 @@ namespace WindowsForms {
 
             if (onSave && txtSurname.Text.Length == 0) {
                 errorProviderSurname.SetError(txtSurname, "Surname is mandatory");
-            }
-            if (txtSurname.Text.Length > 0 && !Regex.IsMatch(txtSurname.Text, "^[a-zA-Z-]+$")) {
+            } else if (txtSurname.Text.Length > 0 && !Regex.IsMatch(txtSurname.Text, "^[a-zA-Z-]+$")) {
                 errorProviderSurname.SetError(txtSurname, "This textbox accepts only alphabetical characters and dash");
             }
         }
@@ -117,8 +115,7 @@ namespace WindowsForms {
 
             if (onSave && txtPassword.Text.Length == 0) {
                 errorProviderPassword.SetError(txtPassword, "Password is mandatory");
-            }
-            if (txtPassword.Text.Length > 0 &&
+            } else if (txtPassword.Text.Length > 0 &&
                 !Regex.IsMatch(txtPassword.Text, "^(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{5,}$")) {
                 errorProviderPassword.SetError(txtPassword,
                     "Password must have:\n  at least 5 symbols;\n  at least one digit;\n  at least one capital letter;\n  at least one special symbol");
@@ -139,13 +136,13 @@ namespace WindowsForms {
         private void ValidateSsn(bool onSave) {
             errorProviderSsn.Clear();
 
-            if (onSave && mskdTxtSsn.Text.Length == 0) {
-                errorProviderSsn.SetError(mskdTxtSsn, "SSN is mandatory");
-            }
-            if (mskdTxtSsn.Text.Length != 12) {
-                errorProviderSsn.SetError(mskdTxtSsn, "SSN is not completed");
-            }
-            if (datePicker.Text.Replace(".", "").Remove(4,2) != mskdTxtSsn.Text.Remove(6,6)) {
+            if (mskdTxtSsn.Text.Length < 12) {
+                if (onSave) {
+                    errorProviderSsn.SetError(mskdTxtSsn, "SSN is mandatory");
+                } else {
+                    errorProviderSsn.SetError(mskdTxtSsn, "SSN is not completed");
+                }                
+            } else if (datePicker.Text.Replace(".", "").Remove(4,2) != mskdTxtSsn.Text.Remove(6,6)) {
                 errorProviderSsn.SetError(mskdTxtSsn, "SSN first part doesn't match birthday");
             }
         }
@@ -155,8 +152,7 @@ namespace WindowsForms {
 
             if (onSave && txtEmail.Text.Length == 0) {
                 errorProviderEmail.SetError(txtEmail, "Email is mandatory");
-            }
-            if (txtEmail.Text.Length > 0) {
+            } else if (txtEmail.Text.Length > 0) {
                 try {
                     var test = new MailAddress(txtEmail.Text);
                 } catch (FormatException ex) {

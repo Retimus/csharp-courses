@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsForms", "WindowsForm
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LINQ", "LINQ\LINQ.csproj", "{C6C14EEF-6826-4B40-B74E-43D197653A15}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegistrationForm", "RegistrationForm\RegistrationForm.csproj", "{6A30346B-2FAC-4CA5-BFE1-4F42B32B62FA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{C6C14EEF-6826-4B40-B74E-43D197653A15}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C6C14EEF-6826-4B40-B74E-43D197653A15}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C6C14EEF-6826-4B40-B74E-43D197653A15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A30346B-2FAC-4CA5-BFE1-4F42B32B62FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A30346B-2FAC-4CA5-BFE1-4F42B32B62FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A30346B-2FAC-4CA5-BFE1-4F42B32B62FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A30346B-2FAC-4CA5-BFE1-4F42B32B62FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
